@@ -27,28 +27,54 @@ public class Pilha {
         return this.v[--this.topo];
     }
 
+    public boolean empilhamento(int i) {
+        if (i <= this.topo) {
+            this.push(i);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
 
         if (obj instanceof Pilha) {
+            int t = this.tamanhoPilha();
             Pilha p = (Pilha) obj;
 
-            if (p.tamanhoPilha() != this.tamanhoPilha()) {
+            if (t != p.tamanhoPilha())
                 return false;
-            } else {
-                while (!p.pilhaVazia()) {
-                    if (p.pop() != this.pop()) {
-                        return false;
-                    }
+
+            Pilha pAux1 = new Pilha(t);
+            Pilha pAux2 = new Pilha(t);
+            boolean isEquals = true;
+
+            while (!p.pilhaVazia()) {
+                int aux1, aux2;
+                aux1 = this.pop();
+                aux2 = p.pop();
+
+                pAux1.push(aux1);
+                pAux2.push(aux2);
+
+                if (aux1 != aux2) {
+                    isEquals = false;
+                    break;
                 }
             }
-        } else {
-            return false;
+
+            while (!pAux1.pilhaVazia()) {
+                this.push(pAux1.pop());
+                p.push(pAux2.pop());
+            }
+
+            return isEquals;
         }
 
-        return true;
+        return false;
     }
 
     @Override

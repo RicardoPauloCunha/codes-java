@@ -37,6 +37,34 @@ public class FilaLigada {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+
+        if (obj instanceof FilaLigada) {
+            FilaLigada f = (FilaLigada) obj;
+
+            if (this.getTamanho() != f.getTamanho())
+                return false;
+
+            No aux1 = this.primeiro;
+            No aux2 = f.primeiro;
+
+            while (aux1 != null) {
+                if (aux1.getInfo() != aux2.getInfo())
+                    return false;
+
+                aux1 = aux1.getProximo();
+                aux2 = aux2.getProximo();
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
     public String toString() {
         String s = "";
 
@@ -46,7 +74,7 @@ public class FilaLigada {
             No aux = this.primeiro;
 
             while (aux != null) {
-                s += aux.getInfo() + "->";
+                s += aux.getInfo() + " -> ";
                 aux = aux.getProximo();
             }
 

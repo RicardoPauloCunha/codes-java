@@ -1,6 +1,6 @@
 public class TesteLista {
     public static void main(String[] args) {
-        int p = 2;
+        int p = 4;
         Lista l = new Lista();
 
         System.out.println("Lista criada:\n" + l);
@@ -11,7 +11,7 @@ public class TesteLista {
         System.out.println("\nLista depois das insercoes de inicio:\n" + l);
 
         l.inserePosicao(0, p);
-        System.out.println("\nLista depois da insercao da posicao " + p + ":\n" + l);
+        System.out.println("\nLista depois da insercao na posicao " + p + ":\n" + l);
 
         l.insereFim(1);
         l.insereFim(3);

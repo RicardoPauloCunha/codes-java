@@ -25,7 +25,6 @@ public class Lista {
     }
 
     public void inserePosicao(int i, int p) {
-
         if (p <= 0) {
             insereInicio(i);
         } else if (p > tamanhoLista() - 1) {
